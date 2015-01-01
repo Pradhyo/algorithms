@@ -1,4 +1,5 @@
 from random import randint
+from eulerian_tour import find_eulerian_tour
 
 def edge(x, y):
     return (x, y) if x < y else (y, x)
@@ -69,3 +70,9 @@ def create_tour(nodes):
             even_nodes.append(x)
     return tour
 
+number_of_nodes = input('Enter number of nodes: ')
+nodes = [i for i in range(number_of_nodes)]
+
+graph = create_tour(nodes)
+print 'Graph created is ', graph
+print 'Eulerian tour is' , find_eulerian_tour(graph)
