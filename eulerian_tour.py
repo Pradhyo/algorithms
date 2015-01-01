@@ -41,8 +41,8 @@ def find_eulerian_tour(graph):
             adj[path[path_index]].remove(path[path_index-1])
         
 
-        elif (current_edges != total_edges -2):
-            if (len(adj[adj[path[path_index]][0]]) == 2) and ((adj[adj[path[path_index]][0]][0] == path[0]) or (adj[adj[path[path_index]][0]][1] == path[0])):
+        elif (current_edges != total_edges - 2):
+            if (len(adj[adj[path[path_index]][0]]) == 2) and ((adj[adj[path[path_index]][0]][0] != path[0]) and (adj[adj[path[path_index]][0]][1] != path[0])):
                 path.append(adj[path[path_index]][0])
             else:
                 path.append(adj[path[path_index]][1])
@@ -56,6 +56,10 @@ def find_eulerian_tour(graph):
     return path
 
 graph = [(1, 2), (1, 4), (3, 4), (2, 3), (3, 8), (4, 8), (4, 5), (3,6), (5,6), (7,8), (6,7),(6,8)]
-find_eulerian_tour(graph)
+graph = [(8, 16), (8, 18), (16, 17), (18, 19),
+(3, 17), (13, 17), (5, 13),(3, 4), (0, 18), (3, 14), (11, 14),
+(1, 8), (1, 9), (4, 12), (2, 19),(1, 10), (7, 9), (13, 15),
+(6, 12), (0, 1), (2, 11), (3, 18), (5, 6), (7, 15), (8, 13), (10, 17)]
+print find_eulerian_tour(graph)
 
 
