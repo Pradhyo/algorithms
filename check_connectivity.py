@@ -12,8 +12,15 @@ def mark_component(G, node, marked):
 def check_connection(G, v1, v2):
     # Return True if v1 is connected to v2 in G
     # or False if otherwise
-    return True
-    
+    marked = {}
+    connections = mark_component(G, v1, marked)
+    if v2 in marked:
+        print "Connected"
+        return True
+    else:
+        print "Not connected"
+        return False
+
 def make_link(G, node1, node2):
     if node1 not in G:
         G[node1] = {}
@@ -32,5 +39,6 @@ def test():
     assert check_connection(G, "a", "c") == True
     assert check_connection(G, 'a', 'b') == False
     
+test()
 
 
