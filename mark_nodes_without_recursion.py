@@ -5,10 +5,15 @@
 
 def mark_component(G, node, marked):
     marked[node] = True
+    open_list = [node]
     total_marked = 1
-    for neighbor in G[node]:
-        if neighbor not in marked:
-            total_marked += mark_component(G, neighbor, marked)
+    while open_list:
+        temp = open_list.pop()
+        for neighbor in G[temp]:
+            if neighbor not in marked:
+                total_marked += 1
+                marked[neighbor] = True
+                open_list.append(neighbor)
     return total_marked
 
 #########
@@ -36,3 +41,5 @@ def test():
     assert 4 not in marked
     assert 5 not in marked
     assert 6 not in marked
+
+test()
