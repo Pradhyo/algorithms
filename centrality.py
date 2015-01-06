@@ -1,4 +1,5 @@
-#
+# Write centrality to return average distance from a 
+# node to all other nodes it can reach
 # Write centrality_max to return the maximum distance
 # from a node to all the other nodes it can reach
 #
@@ -48,8 +49,11 @@ def test():
     G = {}
     for n1, n2 in chain:
         make_link(G, n1, n2)
-    assert centrality_max(G, 1) == 5
-    assert centrality_max(G, 3) == 3
+    print "Graph : %s" % str(chain)
+    print "Centrality_max : ", + centrality_max(G, 1)
+    print "Centrality_max : ", + centrality_max(G, 3)
+    print "Centrality_avg : ", + centrality(G, 1)
+    print "Centrality_avg : ", + centrality(G, 3)
     tree = ((1, 2), (1, 3),
             (2, 4), (2, 5),
             (3, 6), (3, 7),
@@ -58,7 +62,10 @@ def test():
     G = {}
     for n1, n2 in tree:
         make_link(G, n1, n2)
-    assert centrality_max(G, 1) == 3
-    assert centrality_max(G, 11) == 6
+    print "\nGraph : %s" % str(tree)
+    print "Centrality_max : ", + centrality_max(G, 1) 
+    print "Centrality_max : ", + centrality_max(G, 11)
+    print "Centrality_avg : ", + centrality(G, 1)
+    print "Centrality_avg : ", + centrality(G, 11)
 
 test()
