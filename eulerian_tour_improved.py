@@ -25,7 +25,21 @@ def find_eulerian_tour(graph):
     for k,l in graph:
         nodes[k].append(l)
         nodes[l].append(k)
-    return is_tour(nodes)
+    if is_tour(nodes):
+        current_node = nodes[0][0]
+        tour = [current_node]
+        
+        while len(nodes[current_node]) > 0 :
+            next_node = nodes[current_node].pop()
+            nodes[next_node].remove(current_node)      
+            tour.append(next_node)
+            current_node = next_node
+
+        return tour
+
+
+    else:
+        return None
 
     
 
